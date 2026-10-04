@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ملازم تكنولوجيا المعلومات - الصف الثاني الثانوي | زاد المعرفة</title>
+<style>
+:root{
+  --navy:#0a2350;--navy2:#153b78;--gold:#d79b24;--teal:#087f86;
+  --bg:#f4f7fb;--card:#fff;--text:#15233e;--heading:#0a2350;
+  --muted:#596982;--line:#dbe4f0;--soft:#edf4ff;--note:#fff6dc;
+  --noteText:#624600;--code:#101d38;--codeText:#e4fff9;--shadow:0 12px 35px rgba(16,43,85,.10)
+}
+body[data-theme="dark"]{
+  --bg:#071328;--card:#10213d;--text:#f3f7ff;--heading:#fff;--muted:#c4d1e7;
+  --line:#2d4669;--soft:#1b3558;--note:#3b321b;--noteText:#fff0c2;--code:#07101f;--codeText:#e4fff9;--shadow:0 12px 35px #0005
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.95}
+.top{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#081b3a,#153b78);color:#fff;padding:12px 4%;box-shadow:0 3px 20px #0003}
+.topbar{max-width:1250px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900}.logo{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#0a2350;border:3px solid var(--gold);font-size:1.3rem}
+.actions{display:flex;gap:7px;flex-wrap:wrap}.btn{border:1px solid #ffffff55;background:#ffffff18;color:#fff;border-radius:12px;padding:8px 12px;cursor:pointer;font:inherit;font-weight:800}.btn:hover{background:#fff;color:#102b55}
+.hero{max-width:1250px;margin:24px auto;padding:0 20px}.heroCard{background:linear-gradient(135deg,var(--card),var(--soft));border:1px solid var(--line);border-radius:28px;padding:30px;box-shadow:var(--shadow)}
+.hero h1{margin:0 0 8px;color:var(--heading);font-size:clamp(1.8rem,4vw,3rem);line-height:1.35}.hero h1 span{color:var(--gold)}.hero p{color:var(--muted);font-size:1.04rem}
+.switcher{max-width:1250px;margin:0 auto 18px;padding:0 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tab-btn{border:1px solid var(--line);background:var(--card);color:var(--heading);padding:18px;border-radius:18px;cursor:pointer;font:inherit;font-weight:900;box-shadow:var(--shadow);transition:.2s}
+.tab-btn:hover{transform:translateY(-2px)}.tab-btn.active{background:linear-gradient(135deg,#0a2350,#153b78);color:#fff;border-color:#0a2350;box-shadow:0 12px 30px #0a235044}
+.tab-btn small{display:block;font-weight:400;opacity:.85;margin-top:3px}
+.wrap{max-width:1250px;margin:auto;padding:0 20px 50px}
+.panel{display:none}.panel.active{display:block}
+.main{min-width:0}.chapter,.lesson,.card{background:var(--card);border:1px solid var(--line);border-radius:21px;padding:23px;margin-bottom:18px;box-shadow:var(--shadow)}
+.chapter{background:linear-gradient(135deg,#0a2350,#153b78);color:#fff;border:0}.chapter h2,.chapter p{color:#fff;margin-top:0}.lesson h2,.card h2{color:var(--heading);margin-top:0;border-right:5px solid var(--gold);padding-right:12px}.lesson h3,.card h3{color:var(--teal)}
+.note{background:var(--note);color:var(--noteText);border-right:4px solid var(--gold);padding:12px 15px;border-radius:10px;margin:14px 0}
+.keybox{background:var(--soft);border-right:4px solid var(--teal);padding:12px 15px;border-radius:11px;margin:12px 0}
+.code{direction:ltr;text-align:left;background:var(--code);color:var(--codeText);padding:15px;border-radius:13px;overflow:auto;font-family:Consolas,monospace;white-space:pre-wrap}
+table{width:100%;border-collapse:collapse;margin:12px 0;background:var(--card)}th,td{border:1px solid var(--line);padding:9px;text-align:center}th{background:var(--soft);color:var(--heading)}
+.q{border:1px solid var(--line);border-radius:14px;padding:14px;margin:12px 0;background:var(--bg)}.q h4{margin:0 0 8px;color:var(--heading)}
+.answer{display:none;background:var(--soft);border-right:4px solid var(--teal);padding:10px 12px;border-radius:10px;margin-top:9px}.answer.show{display:block}
+.answer-btn{border:0;background:var(--navy);color:white;padding:8px 11px;border-radius:9px;cursor:pointer;font:inherit;font-weight:800}
+.searchBox{max-width:1250px;margin:0 auto 16px;padding:0 20px}.search{width:100%;padding:13px 15px;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:14px;font:inherit;box-shadow:var(--shadow)}
+.progressWrap{max-width:1250px;margin:10px auto;padding:0 20px}.progressBox{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:9px 12px}.progress{height:7px;background:var(--line);border-radius:99px;overflow:hidden}.progress span{display:block;height:100%;width:0;background:var(--gold)}
+.footer{background:#081b3a;color:#fff;text-align:center;padding:24px 15px}.back{display:none;position:fixed;bottom:20px;left:20px;width:46px;height:46px;border:0;border-radius:50%;background:var(--gold);color:#10213d;font-weight:900;cursor:pointer;box-shadow:0 8px 20px #0003}.back.show{display:block}
+@media(max-width:700px){.switcher{grid-template-columns:1fr}.tab-btn{padding:14px}}
+@media print{.top,.switcher,.searchBox,.progressWrap,.back,.answer-btn{display:none!important}.panel{display:block!important}.chapter,.lesson,.card{box-shadow:none;break-inside:avoid}body{background:#fff!important;color:#111!important}}
+</style>
+</head>
+<body data-theme="light">
+<header class="top">
+  <div class="topbar">
+    <div class="brand"><div class="logo">زاد</div><div>زاد المعرفة • الصف الثاني الثانوي</div></div>
+    <div class="actions">
+      <button class="btn" id="themeBtn">🌙 الوضع الليلي</button>
+      <button class="btn" id="printBtn">🖨️ طباعة / PDF</button>
+    </div>
+  </div>
+</header>
+
+<div class="progressWrap"><div class="progressBox">تقدم القراءة<div class="progress"><span></span></div></div></div>
+
+<section class="hero">
+  <div class="heroCard">
+    <h1>ملازم تكنولوجيا المعلومات <span>— زاد المعرفة</span></h1>
+    <p>موقع واحد يجمع ملزمة الشرح وملزمة الملخص وملزمة الأسئلة، ويمكن للطالب الانتقال بينهم بضغطة واحدة.</p>
+  </div>
+</section>
+
+<section class="switcher">
+  <button class="tab-btn active" data-tab="explain">📘 ملزمة الشرح<small>شرح الدروس والمفاهيم بالتفصيل</small></button>
+  <button class="tab-btn" data-tab="summary">📒 ملزمة الملخص<small>مراجعة سريعة ونقاط للحفظ</small></button>
+  <button class="tab-btn" data-tab="questions">📝 ملزمة الأسئلة<small>تدريبات وأسئلة بإجابات مخفية</small></button>
+</section>
+
+<div class="searchBox"><input id="search" class="search" placeholder="ابحث داخل الملزمة الحالية..."></div>
+
+<div class="wrap">
+  <section id="explain" class="panel active"><main class="main"><section class="chapter" data-search="" id="u1"><h2>الوحدة الأولى: أساسيات تصميم مواقع الويب</h2><p>مدخل للمفاهيم التي سيُبنى عليها مشروع «قاموس مصطلحات الكمبيوتر المصور».</p></section>
+<section class="lesson" data-search="" id="concepts"><h2>1) المفاهيم الأساسية</h2>
+<h3>البرامج المجانية Freeware</h3><p>برامج يسمح صاحب حق الملكية الفكرية باستخدامها دون مقابل مادي، مع بقاء حقوق الملكية لصاحبها.</p>
+<h3>البرامج مفتوحة المصدر Open Source</h3><p>برامج منشورة تسمح للمستخدمين بالاطلاع على الكود وإمكانية تعديله وتطويره وفق الاحتياجات ثم استخدام النسخة المعدلة.</p>
+<h3>صفحة الويب الساكنة Static Web Page</h3><p>صفحة تعرض معلومات من خلال مستعرض الإنترنت، وتحفظ غالبًا بامتداد <b>.htm</b> أو <b>.html</b>. تعرض نصوصًا وصورًا وفيديو وجداول وروابط، ولا تجري معالجة لمحتوى الصفحة على الخادم.</p>
+<h3>صفحة الويب الديناميكية Dynamic Web Page</h3><p>صفحة يمكن أن تتضمن معالجة للمحتوى، مثل قراءة مدخلات المستخدم أو التعامل مع قاعدة بيانات. يوضح الكتاب أمثلة باستخدام PHP وASP.NET ويكون جزء من المعالجة على جهاز الخادم.</p>
+<div class="keybox"><b>مفتاح سريع:</b> Static = عرض محتوى ثابت غالبًا. Dynamic = معالجة ونتائج متغيرة وفق البيانات أو المستخدم.</div>
+<h3>الخادم Server</h3><p>يستخدم المصطلح بمعنيين: جهاز بمواصفات مناسبة داخل الشبكة، أو دور/خدمة يؤديها جهاز داخل الشبكة. ومن الأمثلة: Web Server وPrint Server وMail Server وDatabase Server.</p>
+<h3>Script وHTML وPHP</h3><p><b>Script</b> كود يؤدي مهمة أو معالجة. <b>HTML</b> لغة ترميز لإنشاء صفحات ويب ساكنة. <b>PHP</b> لغة تعمل جهة الخادم وتستخدم في تطوير صفحات ديناميكية ويمكنها التعامل مع قواعد البيانات.</p>
+</section>
+<section class="lesson" data-search="" id="servertools"><h2>2) أدوات تشغيل ونشر الموقع</h2>
+<h3>Apache Server</h3><p>يستخدم لمحاكاة دور الخادم على الكمبيوتر الشخصي وتشغيل/ترجمة كود PHP محليًا قبل نشر الموقع على الإنترنت.</p>
+<h3>طرق النشر</h3><p>يمكن عرض الموقع محليًا على <b>Localhost</b> داخل الجهاز أو الشبكة المحلية، أو رفعه إلى جهاز استضافة Web Hosting ليصبح متاحًا عبر عنوان URL.</p>
+<h3>SQL</h3><p>لغة تستخدم لإدارة قواعد البيانات والتعامل معها. يذكر الكتاب أوامر أساسية: <b>INSERT</b> للإضافة، <b>SELECT</b> للاستعراض، <b>UPDATE</b> للتعديل، <b>DELETE</b> للحذف.</p>
+<h3>MySQL Server</h3><p>نظام إدارة قواعد بيانات علائقية RDBMS.</p>
+<h3>حزم تطبيقات الويب</h3>
+<table><tr><th>الحزمة</th><th>النظام</th><th>المكونات الأساسية</th></tr>
+<tr><td>LAMP</td><td>Linux</td><td>Apache + MySQL + PHP</td></tr>
+<tr><td>WAMP</td><td>Windows</td><td>Apache + MySQL + PHP</td></tr>
+<tr><td>MAMP</td><td>Mac</td><td>Apache + MySQL + PHP</td></tr>
+<tr><td>XAMPP</td><td>متعدد الأنظمة</td><td>Apache + MySQL + PHP + Perl وفق عرض الكتاب</td></tr></table>
+<h3>Session</h3><p>طريقة لتخزين معلومات عن زائر الموقع لتظل متاحة عبر صفحات الموقع، مثل اسم المستخدم وبعض بيانات الجلسة.</p>
+</section>
+<section class="lesson" data-search="" id="plan"><h2>3) تخطيط مشروع قاموس المصطلحات</h2>
+<p>هدف المشروع إنشاء موقع قاموس مصطلحات مصور باستخدام أدوات ولغات مجانية ومفتوحة المصدر. تشمل المهام: تهيئة البيئة، إنشاء قاعدة البيانات، تصميم الصفحة الرئيسة، إضافة مصطلح، البحث، الحذف، التعديل، وتوفير المساعدة.</p>
+<div class="note">يؤكد الكتاب على وضع جميع ملفات الموقع في مجلد واحد مع مجلدات فرعية للأنواع المختلفة، واختيار أسماء ملفات مختصرة ومعبرة وباللغة الإنجليزية.</div>
+<p>يمر التنفيذ بثلاث مراحل عامة: إنشاء قاعدة بيانات، إنشاء صفحات ويب ساكنة، ثم تحويل الصفحات اللازمة إلى صفحات ديناميكية بإضافة PHP والتعامل مع قاعدة البيانات.</p>
+</section>
+<section class="chapter" data-search="" id="u2"><h2>الوحدة الثانية: متطلبات ومراحل إنتاج المشروع</h2><p>تصميم الصفحات، إنشاء جداول قاعدة البيانات، ثم الانتقال إلى بناء صفحات الموقع.</p></section>
+<section class="lesson" data-search="" id="pages"><h2>4) تصميم صفحات الموقع</h2>
+<p>من الصفحات التي يحددها الكتاب للمشروع: الصفحة الرئيسة، إدخال مصطلح، البحث عن مصطلح، تعديل مصطلح، حذف مصطلح، المساعدة، بالإضافة إلى صفحات مساعدة مثل الاتصال بقاعدة البيانات وHeader.</p>
+<ul><li><b>Index.php</b>: واجهة الموقع.</li><li><b>Add_term.php</b>: إضافة مصطلح.</li><li><b>Search_term.php</b>: البحث وعرض البيانات.</li><li><b>Edit_term.php</b>: تعديل بيانات مصطلح.</li><li><b>Del_term.php</b>: حذف مصطلح.</li><li><b>Help.php</b>: المساعدة والمعلومات.</li><li><b>Connection.php</b>: فتح الاتصال بقاعدة البيانات.</li><li><b>Header.php</b>: الصورة العلوية والروابط المشتركة.</li></ul>
+<div class="keybox">فصل العناصر المشتركة في صفحات مستقلة يقلل تكرار الكود في جميع صفحات الموقع.</div>
+</section>
+<section class="lesson" data-search="" id="database"><h2>5) قواعد البيانات: المفاهيم الأساسية</h2>
+<h3>Database</h3><p>مجموعة بيانات منظمة ومرتبطة بموضوع معين، تُخزن بهدف استرجاعها والاستفادة منها.</p>
+<h3>Table / Record / Field</h3><p><b>الجدول</b> يتكون من سجلات وحقول. <b>السجل Record</b> صف يجمع بيانات حالة أو شخص واحد. <b>الحقل Field</b> عمود يمثل نوعًا محددًا من البيانات.</p>
+<p>من خصائص الحقل: الاسم، نوع البيانات مثل String أو Numeric أو Date، والحجم Size.</p>
+<h3>Primary Key</h3><p>حقل لا تتكرر قيمته ويستخدم لتمييز كل سجل. إذا لم يوجد حقل طبيعي مناسب يمكن إضافة حقل جديد مثل «رقم الطالب».</p>
+<h3>أنواع العلاقات</h3>
+<table><tr><th>العلاقة</th><th>الفكرة</th><th>مثال الكتاب</th></tr>
+<tr><td>One to One</td><td>سجل يقابله سجل واحد</td><td>بيانات الطالب ↔ حالة الطالب</td></tr>
+<tr><td>One to Many</td><td>سجل واحد يقابله عدة سجلات</td><td>الصف ↔ الطلاب</td></tr>
+<tr><td>Many to Many</td><td>عدة سجلات تقابل عدة سجلات</td><td>الصفوف ↔ المعلمون</td></tr></table>
+<p>العلاقة Many-to-Many تُحل عمليًا بجدول ربط، ويتكون مفتاحه الأساسي المركب من مفتاحي الجدولين المشاركين.</p>
+<h3>كائنات نظم إدارة قواعد البيانات</h3><p>يذكر الكتاب الجداول Tables والاستعلامات Queries كأمثلة أساسية.</p>
+</section>
+<section class="lesson" data-search="" id="projectdb"><h2>6) قاعدة بيانات المشروع</h2>
+<p>اسم قاعدة البيانات في المشروع: <b>dbdictionary</b>، ويستخدم جدولًا باسم <b>Terms</b>. الكتاب يجعل المشروع بجدول واحد للتبسيط.</p>
+<div class="note">المشروع التدريبي يستخدم MySQL لإدارة قاعدة البيانات.</div>
+</section>
+<section class="chapter" data-search="" id="u3"><h2>الوحدة الثالثة: إنشاء صفحات موقع قاموس مصطلحات الكمبيوتر المصور</h2><p>HTML وPHP، إعداد الملفات، التعامل مع قاعدة البيانات، المعاملات والجمل الشرطية، ثم صفحة إضافة مصطلح.</p></section>
+<section class="lesson" data-search="" id="html"><h2>7) لغة HTML</h2>
+<p>HTML لغة ترميز لإنشاء صفحة ويب، ويمكن كتابة الكود في محرر نصوص وحفظ الملف بامتداد <b>.htm</b> أو <b>.html</b>.</p>
+<div class="code">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;عنوان الصفحة&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    محتوى الصفحة
+  &lt;/body&gt;
+&lt;/html&gt;</div>
+<ul><li>الأوامر Tags توضع بين &lt; &gt;.</li><li>معظم Tags لها بداية ونهاية.</li><li>HEAD لمعلومات رأس الصفحة، وTITLE لعنوان النافذة، وBODY للمحتوى المرئي.</li></ul>
+</section>
+<section class="lesson" data-search="" id="php"><h2>8) أساسيات PHP</h2>
+<p>كود PHP يكتب بين علامتي البداية والنهاية، وينفذ جهة الخادم.</p>
+<div class="code">&lt;?php
+$name = "Mohamed";
+echo "my name is $name";
+?&gt;</div>
+<h3>المتغيرات</h3><p>اسم المتغير يبدأ بعلامة <b>$</b>. يتعرف PHP على نوع المتغير من القيمة المسندة إليه. من الأنواع المذكورة: String وInteger وDouble وBoolean.</p>
+<h3>الثوابت</h3><div class="code">define('name','Mohamed');
+echo 'my name is: '.name;</div>
+<h3>التعليقات</h3><p>يذكر الكتاب <b>//</b> للتعليق القصير، والتعليق الممتد بين العلامات المخصصة له.</p>
+</section>
+<section class="lesson" data-search="" id="connect"><h2>9) الاتصال بقاعدة البيانات</h2>
+<p>يوضح الكتاب أن الاتصال يحتاج أربعة بيانات أساسية: اسم الخادم، اسم المستخدم، كلمة المرور، واسم قاعدة البيانات.</p>
+<table><tr><th>العنصر</th><th>قيمة المثال في الكتاب</th></tr><tr><td>اسم الخادم</td><td>localhost</td></tr><tr><td>اسم المستخدم</td><td>root</td></tr><tr><td>كلمة المرور</td><td>فارغة في المثال التعليمي</td></tr><tr><td>قاعدة البيانات</td><td>dbdictionary</td></tr></table>
+<div class="note">الكود المعروض في الكتاب يستخدم دوال MySQL تعليمية قديمة؛ الملزمة هنا تشرح ما ورد في الكتاب كما هو دون استبداله بمكتبات أحدث.</div>
+</section>
+<section class="lesson" data-search="" id="operators"><h2>10) المعاملات والجمل الشرطية في PHP</h2>
+<h3>المعاملات الحسابية</h3><p>+ ، - ، * ، / ، %، وكذلك صور مختصرة مثل += و-= و*= و/= و%=، والزيادة ++ والنقص --.</p>
+<h3>المقارنة</h3><p>== ، != ، &gt; ، &gt;= ، &lt; ، &lt;=</p>
+<h3>المعاملات المنطقية</h3><p>OR يرمز لها ||، وAND يرمز لها &amp;&amp;، وNOT يرمز لها !.</p>
+<h3>If / Elseif / Else</h3><div class="code">if ($x &gt; 0) {
+  echo "الرقم موجب";
+} elseif ($x &lt; 0) {
+  echo "الرقم سالب";
+} else {
+  echo "الرقم يساوي صفر";
+}</div>
+<h3>Switch</h3><p>تستخدم لاختبار عدة احتمالات لقيمة واحدة، مع حالات case وحالة default.</p>
+</section>
+<section class="lesson" data-search="" id="addterm"><h2>11) صفحة Add_Term.php</h2>
+<p>الصفحة مصممة لإدخال بيانات مصطلح جديد. يستخدم النموذج Form لإرسال البيانات إلى الخادم، ويعرض الكتاب الفرق بين GET وPOST.</p>
+<table><tr><th>GET</th><th>POST</th></tr><tr><td>تظهر البيانات في عنوان URL</td><td>لا تظهر البيانات المرسلة في عنوان URL</td></tr><tr><td>لا يناسب البيانات المهمة وفق شرح الكتاب</td><td>يستخدم مع البيانات المهمة مثل كلمات السر وفق شرح الكتاب</td></tr></table>
+<p>تتضمن خطوات الإضافة: تضمين Header وConnection، التحقق من الضغط على زر الإضافة، قراءة قيم النموذج، التعامل مع ملف الصورة، ثم تنفيذ أمر إدخال البيانات والتحقق من نجاح العملية.</p>
+<div class="keybox"><b>فكرة الكود الأكثر دقة في الكتاب:</b> التأكد من وجود مجلد الصور، التحقق من اختيار ملف، التحقق من عدم ترك الحقول فارغة، ثم عرض رسالة نجاح أو رسالة توضح وجود مشكلة.</div>
+</section></main></section>
+  <section id="summary" class="panel"><main class="main">
+<section class="chapter" data-search="" id="s1"><h2>الوحدة الأولى في ورقتين حفظ</h2><p>أهم التعريفات والفروق والكلمات المفتاحية.</p></section>
+<section class="card" data-search="" id="terms"><h2>أهم المصطلحات</h2>
+<table><tr><th>المصطلح</th><th>الخلاصة</th></tr>
+<tr><td>Freeware</td><td>استخدام مجاني مع بقاء حقوق الملكية.</td></tr>
+<tr><td>Open Source</td><td>إتاحة الاطلاع على الكود وتعديله وتطويره.</td></tr>
+<tr><td>Static Web Page</td><td>صفحة ساكنة، غالبًا HTML/HTM، لا تعتمد على معالجة خادمية للمحتوى.</td></tr>
+<tr><td>Dynamic Web Page</td><td>صفحة تسمح بالمعالجة والتعامل مع البيانات وفق المحتوى أو المستخدم.</td></tr>
+<tr><td>Server</td><td>قد يعني جهازًا خادمًا أو دورًا/خدمة داخل الشبكة.</td></tr>
+<tr><td>Script</td><td>كود يؤدي مهمة أو معالجة محددة.</td></tr>
+<tr><td>HTML</td><td>لغة ترميز لإنشاء صفحات الويب.</td></tr>
+<tr><td>PHP</td><td>لغة جهة الخادم لتطوير صفحات ديناميكية والتعامل مع قواعد البيانات.</td></tr>
+<tr><td>Apache</td><td>خادم ويب يستخدم لتشغيل PHP محليًا.</td></tr>
+<tr><td>SQL</td><td>لغة للتعامل مع قواعد البيانات.</td></tr>
+<tr><td>MySQL</td><td>نظام إدارة قواعد بيانات علائقية.</td></tr>
+<tr><td>Session</td><td>تخزين معلومات عن المستخدم لتتاح خلال صفحات الموقع.</td></tr></table>
+<div class="note"><b>SQL للحفظ:</b> INSERT إضافة — SELECT عرض — UPDATE تعديل — DELETE حذف.</div></section>
+<section class="card" data-search="" id="packs"><h2>حزم الويب</h2><p><b>LAMP</b> = Linux • <b>WAMP</b> = Windows • <b>MAMP</b> = Mac. القاسم المشترك في شرح الكتاب: Apache + MySQL + PHP. ويعرض XAMPP كحزمة مناسبة لإعداد Localhost.</p></section>
+<section class="chapter" data-search="" id="s2"><h2>الوحدة الثانية: قاعدة البيانات والمشروع</h2></section>
+<section class="card" data-search="" id="dbsum"><h2>قاعدة البيانات في أسرع صورة</h2>
+<p><b>Table</b> جدول — <b>Record</b> صف — <b>Field</b> عمود — <b>Primary Key</b> قيمة مميزة لا تتكرر — <b>Foreign Key</b> حقل ربط قادم من جدول آخر.</p>
+<table><tr><th>العلاقة</th><th>الخلاصة</th></tr><tr><td>1 : 1</td><td>سجل واحد ↔ سجل واحد</td></tr><tr><td>1 : Many</td><td>سجل واحد ↔ عدة سجلات</td></tr><tr><td>Many : Many</td><td>تحتاج جدول ربط ومفتاحًا مركبًا</td></tr></table>
+<p><b>قاعدة المشروع:</b> dbdictionary — <b>الجدول:</b> Terms.</p></section>
+<section class="card" data-search="" id="pagessum"><h2>صفحات المشروع للحفظ</h2>
+<ul><li>Index.php = الرئيسية</li><li>Add_term.php = إضافة</li><li>Search_term.php = بحث</li><li>Edit_term.php = تعديل</li><li>Del_term.php = حذف</li><li>Help.php = مساعدة</li><li>Connection.php = الاتصال بقاعدة البيانات</li><li>Header.php = العناصر المشتركة مثل Banner والروابط</li></ul></section>
+<section class="chapter" data-search="" id="s3"><h2>الوحدة الثالثة: HTML + PHP</h2></section>
+<section class="card" data-search="" id="htmlsum"><h2>HTML للحفظ</h2><p>الكود يبدأ بـ HTML وينتهي به، وHEAD لمعلومات الرأس، وTITLE للعنوان، وBODY للمحتوى. تحفظ الملفات بامتداد .htm أو .html.</p>
+<div class="code">&lt;html&gt;&lt;head&gt;&lt;title&gt;Title&lt;/title&gt;&lt;/head&gt;&lt;body&gt;Content&lt;/body&gt;&lt;/html&gt;</div></section>
+<section class="card" data-search="" id="phpsum"><h2>PHP للحفظ</h2><ul><li>اسم المتغير يبدأ بـ $.</li><li>= تخصيص قيمة، بينما == مقارنة.</li><li>Echo أو Print للطباعة.</li><li>الأنواع المذكورة: String / Integer / Double / Boolean.</li><li>الثابت يُعرّف باستخدام define.</li><li>كل جملة PHP تنتهي بفاصلة منقوطة.</li></ul></section>
+<section class="card" data-search="" id="condsum"><h2>المعاملات والشروط</h2><p><b>حسابية:</b> + - * / %   |   <b>مقارنة:</b> == != &gt; &gt;= &lt; &lt;=   |   <b>منطقية:</b> || و &amp;&amp; و !</p>
+<p><b>If</b> لشرط أو أكثر، و<b>Switch</b> مناسب لعدة احتمالات لقيمة واحدة.</p></section>
+<section class="card" data-search="" id="postget"><h2>GET وPOST</h2><p><b>GET:</b> البيانات تظهر في URL. <b>POST:</b> البيانات لا تظهر في URL. ووفق الكتاب يستخدم POST عند إرسال بيانات مهمة.</p></section>
+<section class="card" data-search="" id="gold"><h2>الخلاصة الذهبية قبل الامتحان</h2>
+<ol><li>فرّق بين Static وDynamic.</li><li>احفظ وظيفة Apache وMySQL وPHP.</li><li>احفظ أوامر SQL الأربعة.</li><li>افهم Primary Key وForeign Key والعلاقات الثلاث.</li><li>احفظ صفحات المشروع ووظيفة كل صفحة.</li><li>راجع هيكل HTML.</li><li>فرّق بين = و== وبين &amp;&amp; و|| و!.</li><li>افهم فكرة Connection.php وAdd_Term.php.</li></ol></section>
+</main></section>
+  <section id="questions" class="panel"><main class="main"><section class="chapter" data-search="" id="qg1"><h2>الوحدة الأولى: المفاهيم الأساسية</h2><p>10 سؤالًا للتدريب والمراجعة.</p></section>
+<div class="q" data-search=""><h4>س1) اختر: أي وصف يطابق صفحة الويب الساكنة؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">صفحة تعرض محتوى ويمكن حفظها بامتداد HTML/HTM دون معالجة خادمية للمحتوى في تعريف الكتاب.</div></div>
+<div class="q" data-search=""><h4>س2) اختر: أي لغة يذكرها الكتاب كلغة تعمل جهة الخادم لإنشاء صفحات ديناميكية؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">PHP.</div></div>
+<div class="q" data-search=""><h4>س3) ما المقصود بالخادم Server في أحد معنييه؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">قد يكون جهاز كمبيوتر خادمًا داخل شبكة، وقد يقصد به الدور أو الخدمة التي يقدمها جهاز داخل الشبكة.</div></div>
+<div class="q" data-search=""><h4>س4) اذكر مثالين لأنواع الخوادم التي وردت في الكتاب.</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">مثل Web Server وPrint Server وMail Server وDatabase Server.</div></div>
+<div class="q" data-search=""><h4>س5) ما وظيفة Apache Server في المشروع؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">محاكاة/تشغيل دور الخادم على الجهاز الشخصي وتشغيل كود PHP محليًا.</div></div>
+<div class="q" data-search=""><h4>س6) أكمل: INSERT = .... ، SELECT = .... ، UPDATE = .... ، DELETE = ....</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">إضافة، عرض/استعراض، تعديل، حذف.</div></div>
+<div class="q" data-search=""><h4>س7) ما المقصود بـ MySQL Server؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">نظام لإدارة قواعد البيانات العلائقية RDBMS.</div></div>
+<div class="q" data-search=""><h4>س8) ما الفرق الأساسي بين LAMP وWAMP وMAMP؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">نظام التشغيل: Linux وWindows وMac.</div></div>
+<div class="q" data-search=""><h4>س9) ما المقصود بالـ Session؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">طريقة لتخزين معلومات عن المستخدم/الزائر بحيث تتاح عبر صفحات الموقع.</div></div>
+<div class="q" data-search=""><h4>س10) رتب الفكرة العامة لتنفيذ المشروع كما يشرحها الكتاب.</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">إنشاء قاعدة بيانات، إنشاء صفحات ويب ساكنة، ثم تحويل الصفحات اللازمة إلى ديناميكية باستخدام PHP وربطها بالبيانات.</div></div>
+<section class="chapter" data-search="" id="qg2"><h2>الوحدة الثانية: قواعد البيانات والمشروع</h2><p>12 سؤالًا للتدريب والمراجعة.</p></section>
+<div class="q" data-search=""><h4>س11) عرّف قاعدة البيانات Database.</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">مجموعة بيانات منظمة ومرتبطة بموضوع معين يتم تخزينها لاسترجاعها والاستفادة منها.</div></div>
+<div class="q" data-search=""><h4>س12) ما الفرق بين Record وField؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">Record هو صف يضم بيانات حالة/شخص واحد، وField هو عمود يمثل نوعًا محددًا من البيانات.</div></div>
+<div class="q" data-search=""><h4>س13) اذكر ثلاثة أنواع بيانات للحقول وردت في الكتاب.</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">String وNumeric وDate.</div></div>
+<div class="q" data-search=""><h4>س14) ما المقصود بالمفتاح الأساسي Primary Key؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">حقل لا تتكرر قيمه ويستخدم لتمييز كل سجل.</div></div>
+<div class="q" data-search=""><h4>س15) لماذا قد نضيف حقلًا جديدًا مثل رقم الطالب؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">لإنشاء مفتاح أساسي عندما تكون الحقول الموجودة قابلة للتكرار.</div></div>
+<div class="q" data-search=""><h4>س16) اذكر أنواع العلاقات الثلاث في قواعد البيانات.</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">One to One، One to Many، Many to Many.</div></div>
+<div class="q" data-search=""><h4>س17) كيف تُنفذ علاقة Many to Many عمليًا؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">بإنشاء جدول ربط يحوي مفاتيح الجدولين، ويكون المفتاح المركب منهما أساسًا للربط.</div></div>
+<div class="q" data-search=""><h4>س18) ما اسم قاعدة بيانات المشروع؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">dbdictionary.</div></div>
+<div class="q" data-search=""><h4>س19) ما اسم جدول المصطلحات؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">Terms.</div></div>
+<div class="q" data-search=""><h4>س20) ما وظيفة Header.php؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">تجميع العناصر المشتركة مثل الصورة العلوية والروابط التشعبية لاستدعائها في الصفحات الأخرى.</div></div>
+<div class="q" data-search=""><h4>س21) ما وظيفة Connection.php؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">فتح/تحقيق الاتصال بقاعدة البيانات.</div></div>
+<div class="q" data-search=""><h4>س22) صل: Add_term.php / Search_term.php / Edit_term.php / Del_term.php.</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">إضافة مصطلح / البحث عن مصطلح / تعديل مصطلح / حذف مصطلح.</div></div>
+<section class="chapter" data-search="" id="qg3"><h2>الوحدة الثالثة: HTML وPHP</h2><p>17 سؤالًا للتدريب والمراجعة.</p></section>
+<div class="q" data-search=""><h4>س23) بأي امتدادات يمكن حفظ ملف HTML وفق الكتاب؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">.htm أو .html.</div></div>
+<div class="q" data-search=""><h4>س24) ما وظيفة HEAD وTITLE وBODY؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">HEAD لمعلومات رأس الصفحة، TITLE لعنوان الصفحة، BODY للمحتوى المرئي.</div></div>
+<div class="q" data-search=""><h4>س25) بماذا يبدأ اسم المتغير في PHP؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">بعلامة $.</div></div>
+<div class="q" data-search=""><h4>س26) اذكر أنواع المتغيرات التي عرضها الكتاب.</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">String وInteger وDouble وBoolean.</div></div>
+<div class="q" data-search=""><h4>س27) ما الفرق بين = و== في أمثلة PHP؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">= للتخصيص، و== للمقارنة.</div></div>
+<div class="q" data-search=""><h4>س28) ما وسيلتا الطباعة اللتان وردتا في الكتاب؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">Echo وPrint.</div></div>
+<div class="q" data-search=""><h4>س29) كيف يُعرّف ثابت في PHP وفق الكتاب؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">باستخدام define.</div></div>
+<div class="q" data-search=""><h4>س30) ما معاملات المقارنة المذكورة؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">== و!= و&gt; و&gt;= و&lt; و&lt;=.</div></div>
+<div class="q" data-search=""><h4>س31) ما رموز OR وAND وNOT؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">|| و&amp;&amp; و! على الترتيب.</div></div>
+<div class="q" data-search=""><h4>س32) متى نستخدم If؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">لاختبار شرط وتنفيذ كود بناءً على صحة الشرط أو عدمه.</div></div>
+<div class="q" data-search=""><h4>س33) متى تكون Switch مناسبة؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">عند اختبار عدة احتمالات لقيمة واحدة.</div></div>
+<div class="q" data-search=""><h4>س34) اذكر بيانات الاتصال الأربعة بقاعدة البيانات.</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">اسم الخادم، اسم المستخدم، كلمة المرور، اسم قاعدة البيانات.</div></div>
+<div class="q" data-search=""><h4>س35) ما قيم المثال التعليمي للخادم والمستخدم وقاعدة البيانات؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">localhost وroot وdbdictionary.</div></div>
+<div class="q" data-search=""><h4>س36) ما الفرق بين GET وPOST حسب الجدول في الكتاب؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">GET تظهر بياناته في URL، وPOST لا تظهر بياناته في URL.</div></div>
+<div class="q" data-search=""><h4>س37) ما الخطوات الأساسية عند إضافة مصطلح؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">تضمين Header وConnection، قراءة بيانات النموذج، التحقق من القيم والملف، إدخال السجل، ثم إظهار نتيجة العملية.</div></div>
+<div class="q" data-search=""><h4>س38) لماذا يفحص الكود وجود مجلد الصور؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">حتى ينشئه عند عدم وجوده قبل حفظ ملف الصورة.</div></div>
+<div class="q" data-search=""><h4>س39) ماذا يحدث في النسخة الأدق من الكود إذا كانت بعض الحقول فارغة؟</h4><button class="answer-btn">إظهار الإجابة</button><div class="answer">يعرض رسالة تفيد أن البيانات غير صحيحة ويطلب إدخال جميع الحقول.</div></div>
+<section class="card" data-search="" id="exam"><h2>اختبار شامل سريع</h2>
+<ol><li>فرّق بين Static وDynamic.</li><li>اكتب وظائف INSERT وSELECT وUPDATE وDELETE.</li><li>اشرح الفرق بين Primary Key وForeign Key.</li><li>اذكر صفحات المشروع الأساسية ووظيفة كل منها.</li><li>اكتب الهيكل العام لصفحة HTML.</li><li>اذكر ثلاثة معاملات مقارنة وثلاثة معاملات منطقية.</li><li>اشرح فكرة الاتصال بقاعدة البيانات.</li><li>قارن بين GET وPOST كما ورد في الكتاب.</li></ol>
+<div class="note">حل الاختبار من الذاكرة أولًا، ثم ارجع إلى ملزمة الشرح أو الملخص للمراجعة.</div></section></main></section>
+</div>
+
+<button class="back" title="أعلى">↑</button>
+<footer class="footer">منصة زاد المعرفة للتعليم والتربية • تكنولوجيا المعلومات والاتصالات • الصف الثاني الثانوي</footer>
+
+<script>
+const body=document.body;
+const saved=localStorage.getItem('zad2-theme'); if(saved) body.dataset.theme=saved;
+document.getElementById('themeBtn').onclick=()=>{body.dataset.theme=body.dataset.theme==='dark'?'light':'dark';localStorage.setItem('zad2-theme',body.dataset.theme)};
+document.getElementById('printBtn').onclick=()=>window.print();
+
+const buttons=[...document.querySelectorAll('.tab-btn')];
+const panels=[...document.querySelectorAll('.panel')];
+buttons.forEach(btn=>btn.addEventListener('click',()=>{
+  buttons.forEach(b=>b.classList.remove('active'));
+  panels.forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.tab).classList.add('active');
+  document.getElementById('search').value='';
+  document.querySelectorAll('.panel.active [data-search], .panel.active .q').forEach(x=>x.style.display='');
+  scrollTo({top:document.querySelector('.switcher').offsetTop-70,behavior:'smooth'});
+}));
+
+document.querySelectorAll('.answer-btn').forEach(b=>b.onclick=()=>b.nextElementSibling.classList.toggle('show'));
+
+const search=document.getElementById('search');
+search.addEventListener('input',e=>{
+  const q=e.target.value.trim().toLowerCase();
+  const active=document.querySelector('.panel.active');
+  active.querySelectorAll('[data-search], .q').forEach(x=>{
+    x.style.display=!q||x.innerText.toLowerCase().includes(q)?'':'none';
+  });
+});
+
+const bar=document.querySelector('.progress span');
+function upd(){
+  const h=document.documentElement.scrollHeight-innerHeight;
+  bar.style.width=(h?scrollY/h*100:0)+'%';
+  document.querySelector('.back').classList.toggle('show',scrollY>500)
+}
+addEventListener('scroll',upd);upd();
+document.querySelector('.back').onclick=()=>scrollTo({top:0,behavior:'smooth'});
+</script>
+</body></html>
